@@ -1,0 +1,91 @@
+-- This file has been generated from package.yaml by hpack version 0.20.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 70549e1ffe86e9f29b8bd01404d00b6e91402dd757584b87037b5ff13e5f9242
+
+name:           shak
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/shak#readme>
+homepage:       https://github.com/githubuser/shak#readme
+bug-reports:    https://github.com/githubuser/shak/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2018 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+
+extra-source-files:
+    ChangeLog.md
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/shak
+
+library
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , split
+    , process
+    , ansi-terminal
+    , attoparsec
+    , mtl
+    , lens
+    , bytestring
+    , containers
+    , rainbow
+  exposed-modules:
+      Shak
+    , ParseShak
+    , VimLike
+  other-modules:
+      Paths_shak
+  default-language: Haskell2010
+
+executable shak-exe
+  main-is: Main.hs
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , shak
+    , split
+    , process
+    , ansi-terminal
+    , attoparsec
+    , mtl
+    , lens
+    , bytestring
+    , containers
+    , rainbow
+  other-modules:
+      Paths_shak
+  default-language: Haskell2010
+
+test-suite shak-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , shak
+    , split
+    , process
+    , ansi-terminal
+    , attoparsec
+    , mtl
+    , lens
+    , bytestring
+    , containers
+    , rainbow
+  other-modules:
+      Paths_shak
+  default-language: Haskell2010
