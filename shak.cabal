@@ -53,7 +53,7 @@ executable shak-exe
   main-is: Main.hs
   hs-source-dirs:
       app
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -O2
   build-depends:
       base >=4.7 && <5
     , shak
@@ -77,7 +77,7 @@ test-suite shak-test
   main-is: Spec.hs
   hs-source-dirs:
       test
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -O2
   build-depends:
       base >=4.7 && <5
     , shak
