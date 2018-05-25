@@ -10,7 +10,7 @@ import qualified Data.ByteString.Char8 as B
 import System.Console.ANSI
 
 
-runChunks fn = runAction fn searchLine Nothing (printChunk :: (Int, [Line]) -> IO ()). parseChunks
+runChunks fn = runAction fn searchLine Nothing printChunk . parseChunks
 
 
 main :: IO ()

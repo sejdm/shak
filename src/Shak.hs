@@ -41,7 +41,7 @@ emptyLine = Line "" "" [] "" Stage "" True 1
 
 
 
-
+printChunk :: (Int, [Line]) -> IO ()
 printChunk (_, []) = return ()
 printChunk (n, l:ls) = do
   B.putStrLn $ "Screen: " `B.append` B.pack (show  n)
