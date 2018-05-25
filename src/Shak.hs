@@ -1,5 +1,4 @@
-{-# LANGUAGE TemplateHaskell #-}
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE TemplateHaskell, DeriveGeneric, DeriveAnyClass, OverloadedStrings #-}
 module Shak
     (
       act
@@ -14,13 +13,16 @@ module Shak
     , printChunk
     , lineNum
     , searchLine
+    , Line
     ) where
 
 import Control.Lens
 import System.Console.ANSI
 import qualified Data.ByteString.Char8 as B
+import Control.DeepSeq
+import GHC.Generics
 
-data LineType = Speech | Stage deriving (Show, Eq)
+data LineType = Speech | Stage deriving (Show, Eq, Generic, NFData)
 
 data Line = Line {
     _act :: B.ByteString
@@ -31,7 +33,7 @@ data Line = Line {
   , _line :: B.ByteString
   , _lastBlank :: Bool
   , _lineNum :: Int
-  } deriving (Show)
+  } deriving (Show, Generic, NFData)
 
 makeLenses ''Line
 emptyLine = Line "" "" [] "" Stage "" True 1

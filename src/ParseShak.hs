@@ -100,7 +100,7 @@ elemS = elem
 
 
 
-
+parseChunks :: B.ByteString -> [[Line]]
 parseChunks ls = (splitLong 30 . chunkify . removeBlanks . dropWhile ((=="") . view scene) .  toLines cs . removeBreaks) rs
   where (cs, rs) = getChars ls
 

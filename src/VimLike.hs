@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings, NoMonomorphismRestriction #-}
 module VimLike
   (
     runAction
@@ -11,9 +11,10 @@ import qualified Data.Map.Strict as M
 import qualified Data.ByteString.Char8 as B
 import Data.List.Split (splitOn)
 import System.Console.ANSI
+import Control.DeepSeq
 
 applyMany 0 f x = x
-applyMany n f x | n >= 0 = applyMany (n-1) f (f x)
+applyMany n f x | n >= 0 = x `deepseq` applyMany (n-1) f (f x)
                 | otherwise = x
 
 move n | n >= 0 = applyMany n next

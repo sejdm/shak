@@ -39,6 +39,7 @@ library
     , bytestring
     , containers
     , rainbow
+    , deepseq
   exposed-modules:
       Shak
     , ParseShak
@@ -64,6 +65,7 @@ executable shak-exe
     , bytestring
     , containers
     , rainbow
+    , deepseq
   other-modules:
       Paths_shak
   default-language: Haskell2010
@@ -86,6 +88,7 @@ test-suite shak-test
     , bytestring
     , containers
     , rainbow
+    , deepseq
   other-modules:
       Paths_shak
   default-language: Haskell2010
