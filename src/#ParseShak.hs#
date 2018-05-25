@@ -136,4 +136,3 @@ removeBreaks (k:ls) | c=='[' && B.elem ']' l = k : removeBreaks ls
 
 testChunks ls = (dropWhile ((=="") . view scene) .  toLines cs . removeBreaks) rs
   where (cs, rs) = getChars ls
-

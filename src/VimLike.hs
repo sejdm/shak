@@ -12,20 +12,25 @@ import qualified Data.ByteString.Char8 as B
 import Data.List.Split (splitOn)
 import System.Console.ANSI
 import Control.DeepSeq
+import Control.Seq
 
 applyMany 0 f x = x
-applyMany n f x | n >= 0 = x `deepseq` applyMany (n-1) f (f x)
+applyMany n f x | n >= 0 = (x `using` seqTuple2 (seqListN 1 rdeepseq) (seqListN 1 rdeepseq)) `seq` applyMany (n-1) f (f x)
                 | otherwise = x
+
 
 move n | n >= 0 = applyMany n next
        | otherwise = applyMany (abs n) previous
+
 
 next a@(_, []) = a
 next (xs, ys@[_]) = (xs, ys)
 next (xs, (y:ys)) = ((y:xs), ys)
 
+
 previous (xs@[], ys) = (xs, ys)
 previous ((x:xs), ys) = (xs, (x:ys))
+
 
 beginning a@([], _) = a
 beginning (x:xs, ys) = beginning (xs, x:ys)
