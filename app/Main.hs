@@ -10,7 +10,7 @@ import qualified Data.ByteString.Char8 as B
 import System.Console.ANSI
 
 
-runChunks fn = runAction fn searchLine Nothing printChunk . parseChunks
+runChunks fn = runVimList fn searchLine (showCurrent printChunk) . parseChunks
 
 
 main :: IO ()
